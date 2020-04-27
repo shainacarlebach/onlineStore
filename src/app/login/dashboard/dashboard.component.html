@@ -1,0 +1,15 @@
+<!--navigate to login or register nav-->
+<nav class="navbar">
+  <a class="navbar-brand" href="/">
+    <img id="logo" src="assets/images/supermarket.png" alt="supermarket" style="width:200px;margin-left:0px;">
+  </a> <div class="navbar-expand ml-auto navbar-nav">
+
+    <ul class="navbar-nav" routerLinkActive="active">
+        <li class="nav-item"><a class="nav-link" routerLink="/about"> <i class="material-icons">home</i>ABOUT</a></li>
+       <li class="nav-item"><a class="nav-link" routerLink="/login"> <i class="material-icons">account_circle</i> LOGIN</a></li>
+       <li class="nav-item"><a class="nav-link" routerLink="/register"><i class="material-icons">person_add</i> REGISTER</a></li>
+       </ul>
+    </div>
+
+</nav>
+<router-outlet></router-outlet>

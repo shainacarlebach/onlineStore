@@ -1,0 +1,75 @@
+<!--login form-->
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 login-sec">
+        <h2 class="text-center">LOGIN</h2>
+        <form class="login-form"  [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="loginForm">
+
+           <div class="form-group" [ngClass]="{'has-danger': username.invalid && (username.dirty || username.touched),
+               'has-success': username.valid && (username.dirty || username.touched) }">
+            <label for="username">Username:</label>
+            <input type="text"  class="form-control" formControlName="username" required/>
+
+            <div class="form-control-feedback"
+             *ngIf="username.errors && (username.dirty || username.touched)">
+              <p *ngIf="username.errors.required">Username is required</p>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-danger': password.invalid && (password.dirty || password.touched),
+     'has-success': password.valid && (password.dirty || password.touched)}">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" formControlName="password" required/>
+
+
+            <div class="form-control-feedback"
+                         *ngIf="password.errors && (password.dirty || password.touched)">
+              <p *ngIf="password.errors.required">Password is required</p>
+              <p *ngIf="password.errors.pattern">Password must be 8 characters long </p>
+            </div>
+          </div>
+
+          <!-- Sign in button -->
+          <button type="submit"[disabled]= "!loginForm.valid " class="btn btn-danger">Login</button>
+
+          <div id=register>
+            <!-- Register -->
+            <p>Not a member?
+              <button class="form-btn-hollow" (click)="movetoregister()">Register</button>
+            </p>
+          </div>
+        </form>
+        <!-- <pre>{{loginForm.value | json}}</pre> -->
+      </div>
+      <div class="col-md-8 banner-sec">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                   <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block img-fluid" src="https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&h=350"
+              alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="banner-text">
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+              <div class="banner-text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>

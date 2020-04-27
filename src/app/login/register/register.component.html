@@ -1,0 +1,118 @@
+<!-- first register form-->
+<section class="register-block">
+  <div class="container">
+
+      <h3>User Registration:</h3>
+      <img src="assets/images/register.jpg" class="center" alt="register" style="width:200px;">
+
+      <div class="row">
+          <div class="col-md-12" id="registerForm">
+              <h2>Sign in - customer : "STEP 1" </h2>
+
+              <form #registerForm="ngForm" class="editForm" novalidate>
+
+                  <div class="form-group">
+                      <label for="username">Username:</label>
+                      <input id="username" class="form-control input-md" type="text" name="username" required pattern='[a-zA-Z ]*' nameExists [(ngModel)]="register.username"
+                          #username="ngModel" appValidator>
+
+                      <div class="alert alert-danger" [hidden]="username.valid">
+                          Username is required
+                      </div>
+                      <div *ngIf="username.dirty && username.errors" class="error">
+                          <div *ngIf="username.errors.pattern">
+                              The username must be alphabetic characters only
+                          </div>
+                          <div *ngIf="username.invalid">
+                              <div *ngIf="username.errors?.nameExists">
+                                  😢 Oh no, this username already exists!
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="id">ID:</label>
+                      <input id="id" class="form-control input-md" type="text" name="id" required [pattern]="pattern" [(ngModel)]="register.id"
+                          #id="ngModel" appUniqueId>
+
+                      <div class="alert alert-danger" [hidden]="id.valid">Id is required</div>
+                      <div *ngIf="id.dirty && id.errors" class="error">
+                          <div *ngIf="id.errors?.pattern">
+                              The id must be numeric digits only between 1-9
+                          </div>
+                          <div *ngIf="id.errors?.idExists">
+                              😢 Oh no, this customer already exists!
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                  <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input class="form-control input-md" type="email" name="email" required pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'
+                          [(ngModel)]="register.email" #email="ngModel">
+
+                      <div class="alert alert-danger" [hidden]="email.valid">
+                          Email is required
+                      </div>
+                      <div *ngIf="email.dirty && email.errors" class="error">
+                          <div *ngIf="email.errors.pattern">
+                              The email address must contain at least the @ character
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input class="form-control input-md" type="password" name="password" required pattern='(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{8,}'
+                          [(ngModel)]="register.password" #password="ngModel">
+
+                      <div class="alert alert-danger" [hidden]="password.valid">
+                          Password is required
+                      </div>
+                      <div *ngIf="password.dirty && password.errors" class="error">
+                          <div *ngIf="password.errors.pattern">
+                              Password must be 8 characters long and contain 2 capital letters , 2 lowercase letters and a number
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="cnfpass"> Confirm password: </label>
+
+                      <input class="form-control input-md" type="password" name="cnfpass" required pattern='(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{8,}'
+                          [(ngModel)]="register.cnfpass" #cnfpass="ngModel">
+                      <div class="alert alert-danger" [hidden]="cnfpass.valid">
+                          Please confirm your password.
+                      </div>
+
+                      <span *ngIf="!validatecnfpassValue()">Password and confirm password should match</span>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="role">Role:</label>
+                      <select class="form-control" id="role" required [(ngModel)]="register.role" name="role" #role="ngModel">
+                          <option value="">Please select a role</option>
+                          <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+                      </select>
+
+                      <div [hidden]="role.valid || role.pristine" class="alert alert-danger">
+                          Role is required
+                      </div>
+                  </div>
+
+                  <div class="form-group text-center">
+                      <button class="btn btn-success" [disabled]="!registerForm.valid " (click)="goToNext(registerForm)">Continue</button>
+                  </div>
+              </form>
+
+              <!-- DEBUG -->
+              <!-- <pre>{{registerForm.value | json}}</pre> -->
+
+          </div>
+      </div>
+  </div>
+</section>

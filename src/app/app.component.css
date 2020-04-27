@@ -1,0 +1,29 @@
+.navbar {
+  margin-bottom: 0;
+  background-color: #f4511e;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  font-family: Montserrat, sans-serif;
+
+}
+
+.row.content {height: 450px}
+
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+span{ font-style: oblique;
+  font-family: Georgia,serif;
+  color: wheat;
+}
+
+.product, p{color:white}

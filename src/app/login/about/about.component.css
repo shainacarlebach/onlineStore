@@ -1,0 +1,171 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+*/
+
+img #onlinegrocery {
+display: block;
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+#main-slider {
+  margin-top:-180px;
+}
+
+#main-slider {
+position: relative;
+}
+
+.no-margin {
+margin: 0;
+padding: 0;
+}
+
+#main-slider .carousel .carousel-content {
+margin-top: 150px;
+}
+
+#main-slider .carousel .slide-margin{
+margin-top: 140px;
+}
+
+#main-slider .carousel h2 {
+color: tomato;
+text-transform:uppercase;
+font-size:50px;
+font-weight:800;
+position: absolute;
+margin: auto;
+   top: 0;
+   left:0;
+   right:0;
+   bottom:0;
+   height:100px;
+}
+
+#main-slider .carousel h2 span {
+color: #1BBD36;
+}
+
+#main-slider .carousel h2 span spani {
+color: #000;
+}
+
+#main-slider .carousel p {
+color: #ddd;
+font-size:25px;
+position: absolute;
+margin: auto;
+   top: 0;
+   left:0;
+   right:0;
+   bottom:0;
+   height:100px;
+}
+
+#main-slider .carousel .btn-slide {
+padding: 8px 20px;
+background: #1BBD36;
+color: #fff;
+border-radius: 4px;
+margin-top: 25px;
+display: inline-block;
+}
+
+#main-slider .carousel .slider-img{
+text-align: right;
+position: absolute;
+}
+
+
+#main-slider .carousel .item {
+background-position: 50%;
+background-repeat: no-repeat;
+background-size: cover;
+left: 0 !important;
+opacity: 0;
+top: 0;
+position: absolute;
+width: 100%;
+display: block !important;
+height: 730px;
+-webkit-transition: opacity ease-in-out 500ms;
+-moz-transition: opacity ease-in-out 500ms;
+-o-transition: opacity ease-in-out 500ms;
+transition: opacity ease-in-out 500ms;
+}
+
+#main-slider .carousel .item:first-child {
+top: auto;
+position: relative;
+}
+
+#main-slider .carousel .item.active {
+opacity: 1;
+-webkit-transition: opacity ease-in-out 500ms;
+-moz-transition: opacity ease-in-out 500ms;
+-o-transition: opacity ease-in-out 500ms;
+transition: opacity ease-in-out 500ms;
+z-index: 1;
+}
+
+#main-slider .active .animation.animated-item-1 {
+-webkit-animation: fadeInUp 300ms linear 300ms both;
+-moz-animation: fadeInUp 300ms linear 300ms both;
+-o-animation: fadeInUp 300ms linear 300ms both;
+-ms-animation: fadeInUp 300ms linear 300ms both;
+animation: fadeInUp 300ms linear 300ms both;
+margin-top: 260px;
+margin-right: -200px;
+}
+
+
+
+@media (max-width: 768px) {
+  #main-slider .carousel .carousel-content {
+    margin-top: 40px;
+      text-align: center;
+  }
+
+  #main-slider .carousel .slide-margin{
+    margin-top: 40px;
+  }
+
+  #main-slider .carousel p {
+    color: #fff;
+    font-size:18px;
+      line-height: 24px;
+  }
+
+}
+.row.content {height: 450px}
+
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+h2{
+  color:tomato;
+}
+
+
+div > span {
+  font-size: 0.75rem;
+  color: firebrick;
+}
+.bg-grey {
+background-color: #f6f6f6;
+}
