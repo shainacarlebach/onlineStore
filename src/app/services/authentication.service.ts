@@ -52,17 +52,17 @@ export class AuthenticationService {
   checkCustomerNameNotTaken(username: string): Observable<any> {
     return this.http.post(environment.serverAddress + 'customer/name', { username: username });
   }
-//get all customers
+// get all customers
   getAllCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(environment.serverAddress + 'customers');
   }
 
-  //get cities
+  // get cities
   getCities(): Observable<any> {
     return this.http.get(environment.serverAddress + 'cities');
   }
 
-  //get register info
+  // get register info
   getRegister(): Register {
     // Return the Register data
     var register: Register = {
@@ -75,7 +75,7 @@ export class AuthenticationService {
     };
     return register;
   }
-//set register info
+// set register info
   setRegister(data: Register) {
     // Update the Personal data only when the Personal Form had been validated successfully
     this.isRegisterFormValid = true;

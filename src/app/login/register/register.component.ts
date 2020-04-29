@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
-import { TakenIdValidator } from './idvalidator';
-import { TakenNameValidator } from './namevalidator';
+import { TakenIdValidator } from './idvalidator.directive';
+import { TakenNameValidator } from './namevalidator.directive';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Register, Customer } from '../../models/customer';
 import { Observable, throwError } from 'rxjs';

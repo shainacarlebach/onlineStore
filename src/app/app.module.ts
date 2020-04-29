@@ -23,8 +23,8 @@ import { AboutComponent } from './login/about/about.component';
 import { Register2Component } from './login/register2/register2.component';
 import { DashboardComponent } from './login/dashboard/dashboard.component';
 
-import { ExistingIdValidatorDirective } from './login/register/existingidvalidator.directive';
-import { ExistingNameValidatorDirective } from './login/register/existingnamevalidator.directive';
+import { ExistingIdValidatorDirective } from './login/register/idvalidator.directive';
+import { ExistingNameValidatorDirective } from './login/register/namevalidator.directive';
 import { ShoppingComponent } from './customer/shopping/shopping.component';
 import { CategoriesComponent } from './customer/shopping/categories/categories.component';
 import { CartComponent } from './customer/shopping/cart/cart.component';

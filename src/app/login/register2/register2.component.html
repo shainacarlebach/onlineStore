@@ -1,1 +1,66 @@
-<p>register2 works!</p>
+<!--address form-->
+<section class="register2-block">
+  <div class="container">
+      <h3>
+          <i class="material-icons">local_shipping</i> Delivery details:</h3>
+
+      <div class="row">
+          <div class="col-md-12" id="register2Form">
+              <h2>Sign in - customer : "STEP 2" </h2>
+
+              <form #register2Form="ngForm" class="editForm" novalidate >
+
+                  <div *ngIf="cities">
+                      <div class="form-group">
+                          <label for="city"> Select city:</label>
+                          <select class="form-control" id="city" name="city" required [(ngModel)]="register2.city" #city="ngModel">
+                             <option value="">Please select a city</option>
+                              <option *ngFor="let city of cities" [ngValue]="city">{{city.value}}_{{city.name}}</option>
+                          </select>
+                      </div>
+                      <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
+                                       </div>
+
+
+                  <div class="form-group">
+                      <label for="streetaddress">Street Address:</label>
+                      <input id="streetaddress" class="form-control input-md" type="text" name="streetaddress" required [(ngModel)]="register2.streetaddress"
+                          #streetaddress="ngModel">
+                      <div class="alert alert-danger" [hidden]="streetaddress.valid">Street Address is required</div>
+                                 </div>
+
+                  <div class="form-group">
+                      <label for="name">Name:</label>
+                      <input id="name" class="form-control input-md" type="text" name="name" required pattern="[a-zA-Z ]*" [(ngModel)]="register2.name"
+                          #name="ngModel">
+
+                      <div class="alert alert-danger" [hidden]="name.valid">Name is required</div>
+                                           <div *ngIf="name.dirty && name.errors" class="error">
+                          <div *ngIf="name.errors.pattern">
+                              The name must be alphabetic characters only
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="surname">Surname:</label>
+                      <input id="surname" class="form-control input-md" type="text" name="surname" required pattern="[a-zA-Z ]*" [(ngModel)]="register2.surname"
+                          #surname="ngModel">
+
+                      <div class="alert alert-danger" [hidden]="surname.valid">Surname is required</div>
+                      <div *ngIf="surname.dirty && surname.errors" class="error">
+                          <div *ngIf="surname.errors.pattern">
+                              The surname must be alphabetic characters only
+                          </div>
+                      </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-success" [disabled]="!register2Form.valid " (click)="onSubmit(register2Form)">Register</button>
+
+                  <!-- <pre>{{register2Form.value | json}}</pre> -->
+              </form>
+          </div>
+      </div>
+  </div>
+
+</section>
