@@ -1,1 +1,15 @@
-<p>product-list-view works!</p>
+<!--products page-->
+<div class="card-group">
+  <a *ngFor="let product of products.data" class="col-sm-4 card" data-toggle="modal" data-target="#myModal" (click)="openModal(product)">
+    <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+    <div class="card-body" id="productsdisplay">
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.details}}</p>
+      <p class="card-text">{{product.price| currency:'ILS':"symbol-narrow"}}</p>
+      <p class="card-text">{{product.code}}</p>
+      <button type ="button"class="btn btn-danger"> <i class="material-icons">shopping_cart</i>Add to Cart </button>
+    </div>
+  </a>
+</div>
+
+<div data-spy="scroll" data-target=".card-group" data-offset="0"></div>

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ProductService } from '../../services/product.service';
+import { Router,ActivatedRoute, Params } from '@angular/router';
+import * as $AB from 'jquery';
+ declare var $: any;
 
 @Component({
   selector: 'app-admin-view',
@@ -6,10 +11,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-view.component.css']
 })
 export class AdminViewComponent implements OnInit {
+   navbarOpen =false;
+  constructor(private authenticationService: AuthenticationService,
+    private productService: ProductService){}
 
-  constructor() { }
+     ngOnInit() { }
 
-  ngOnInit(): void {
+ toggleNavbar() {
+   this.navbarOpen = !this.navbarOpen;
   }
-
+  //toggle to get create product form
+ sidebarToggle(){
+ $(document).ready(function () {
+   $('#sidebarCollapse').on('click', function () {
+   $('#sidebar').toggleClass('active');
+   $(this).toggleClass('active');
+ });
+ });
+ }
 }

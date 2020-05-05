@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ProductService } from '../../../services/product.service';
+import { SingleProductComponent } from '../single-product/single-product.component';
+import * as $AB from 'jquery';
+declare var $: any
 
 @Component({
   selector: 'app-product-list-view',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,  private productService: ProductService ) { }
+  currentCategory = "";
+  products: any=this.productService.products;
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+    this.route.params
+      .subscribe(
+      (params: Params) => {
+        this.currentCategory = params['category'];
+        this.productService.getProductByCategory(this.currentCategory);
+      }
+      )
+ }
+
+
+// open popup box with dialog modal for product
+openModal(product){
+this.productService.activeProduct.data = product;
+$('#myModal').modal('show');
 
 }
+  }

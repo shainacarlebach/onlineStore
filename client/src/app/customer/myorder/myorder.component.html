@@ -1,1 +1,63 @@
-<p>myorder works!</p>
+<!--order page, amount in cart and amount of each item -->
+<div id="order-page">
+  <div class="container-fluid bg-grey" id="reciept">
+   <h4>Shopping list  <i class="material-icons">playlist_add_check</i></h4>
+   <form class="form-inline my-2 my-lg-0">
+     <i class="material-icons">search</i>
+     <input class="form-control mr-sm-2" type="text" placeholder="Search Receipt" aria-label="Search" name=searchreceipt [(ngModel)]="searchProduct">
+   </form>
+
+
+
+ <table class="table">
+   <thead>
+     <tr>
+       <th scope="col">Item</th>
+       <th scope="col">Name</th>
+       <th scope ="col">Code</th>
+       <th scope="col">Price</th>
+       <th scope="col">Amount</th>
+       <th scope="col">Total</th>
+       <th scope="col"></th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let item of cart.data">
+       <th scope="row">
+         <img src="{{item.image}}" id="image">
+       </th>
+       <td>
+       <div innerHTML="{{item.name |searchText:searchProduct}}"></div>
+       </td>
+        <td>
+          {{item.code}}
+       </td>
+       <td>
+         {{item.price| currency:'ILS':"symbol-narrow"}}
+       </td>
+       <td>
+         {{item.amount}}
+       </td>
+       <td>{{item.total| currency:'ILS':"symbol-narrow" }}</td>
+     </tr>
+   </tbody>
+ </table>
+
+   <div class="alert alert-warning" role="alert">
+       <p>Amount in cart:{{cartCount()}}</p>
+       <p> Order Subtotal: {{cartTotal() |currency:'ILS':"symbol-narrow"}}</p>
+     </div>
+
+     <button type="button" class="btn btn-danger" routerLink='/customer/shopping' style="float:right;">
+       <i class="material-icons">shopping_cart</i>
+       Back to Shop
+     </button>
+
+    <button type="button" class="btn btn-danger" routerLink='../shipping'>
+       <i class="material-icons">local_shipping</i>
+       Delivery Form
+     </button>
+  </div>
+  </div>
+
+  <router-outlet></router-outlet>

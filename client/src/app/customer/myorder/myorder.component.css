@@ -1,0 +1,24 @@
+#order-page{
+  background-color: #DE6262;
+  height:100%;
+}
+.table{
+  height:100%;
+  width:100%;
+  background-image:url('/assets/formbg.jpg');
+  font-size: 1.5rem;
+   }
+tbody{
+    width:100%;
+}
+#image{
+width:100px;
+height:100px;
+}
+h4{
+ color:white;
+}
+#reciept{
+ border: 2px solid #f41e1e;
+ border-radius: 12px;
+}

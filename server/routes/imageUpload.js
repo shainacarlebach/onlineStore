@@ -6,18 +6,10 @@ const path = require('path');
 
 //validate file to ensure its an image
 
-const fileFilter = (req, files, cb) => {
-    if (files.mimetype === 'image/jpeg' || files.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-
 // use multer middleware
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/shopping/uploads/')
+        cb(null, '../../uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname)
@@ -25,9 +17,7 @@ const storage = multer.diskStorage({
 })
 
 var upload = multer({
-    storage: storage, limits: {
-        fileFilter: fileFilter
-    }
+    storage: storage
 }).single('file')
 
 module.exports = router;

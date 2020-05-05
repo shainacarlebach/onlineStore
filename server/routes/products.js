@@ -4,14 +4,9 @@ const mysql = require('mysql');
 const path = require('path')
 const fs = require('fs');
 const async = require('async');
-
+  
 // bring in jwt object from login_cart_order
 const { userToken } = require('./login_cart_order');
-
-var corsOptions ={
-  origin:'http://localhost:8080',
-     credentials: true
-};
 
 const conn = mysql.createConnection({
     host: 'localhost',

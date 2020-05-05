@@ -1,1 +1,28 @@
-<p>admin-view works!</p>
+<!-- admin page to add/edit product-->
+<div id="admin-page">
+
+  <div class="navbar-header">
+      <app-admin-categories></app-admin-categories>
+  </div>
+  <div class="wrapper">
+
+      <div class="row">
+          <!-- Sidebar Holder -->
+
+          <nav id="sidebar" class="col-md-6" [ngClass]="{ 'active': navbarOpen }">
+              <app-admin-create-product></app-admin-create-product>
+              </nav>
+
+
+          <!-- Page Content Holder -->
+          <div id="content" class="col-md-6">
+              <button type="button" id="sidebarCollapse" (click)="toggleNavbar()" class="navbar-btn">
+                <i class="material-icons">add</i>
+                  Add Product
+              </button>
+
+              <app-admin-product-view></app-admin-product-view>
+          </div>
+      </div>
+  </div>
+</div>

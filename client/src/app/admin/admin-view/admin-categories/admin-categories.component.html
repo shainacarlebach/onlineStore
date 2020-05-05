@@ -1,1 +1,22 @@
-<p>admin-categories works!</p>
+<!--navbar with categories and products>-->
+<nav class="navbar navbar-expand-lg " id="navbar">
+
+  <ul class="nav nav-tabs" routerLinkActive="active" >
+        <li class="nav-item">
+          <a *ngFor="let category of categories; let i= index"class="nav-link"(click)="search.text=''"routerLink="/admin/admin-view/{{category.id}}">
+            {{category.name}}|
+          </a>
+            </li>
+      </ul>
+
+      <div class="navbar-expand ml-auto navbar-nav">
+          <div id="search-component">
+            <form class="form-inline my-2 my-lg-0">
+              <i class="material-icons">search</i>
+              <input class="form-control mr-sm-2" type="text" placeholder="Search Product" aria-label="Search" [(ngModel)]=search.text
+                name=search (input)=getProduct()>
+
+            </form>
+          </div>
+          </div>
+          </nav>

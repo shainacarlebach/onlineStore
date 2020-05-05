@@ -1,1 +1,109 @@
-<p>welcome works!</p>
+<!-- user welcome page with differnt options for user-->
+<main class="welcome-block">
+
+  <!--user is new to website-->
+  <div *ngIf="user.data.isNew && !this.cart.data.length">
+    <h4>Welcome {{user.data.username}}, start shopping!
+    </h4>
+    <p>
+      <a routerLink="shopping" class="w3-button w3-red w3-padding-large w3-large">
+        <i class="material-icons">shopping_cart</i>SHOP NOW</a>
+    </p>
+  </div>
+
+  <!-- User is not new, and has no open cart -->
+  <div *ngIf="!user.data.isNew && !this.cart.data.length">
+    <h4>Welcome {{user.data.username}}, your last purchase was on :</h4>
+    <div *ngIf="customerDetails.data.length">
+    <div *ngFor="let detail of customerDetails.data">
+       <p>{{detail.order_date}}</p>
+     </div>
+     </div>
+   <div>
+    <p>
+      <a routerLink="shopping" class="w3-button w3-red w3-padding-large w3-large">
+        <i class="material-icons">shopping_cart</i>SHOP NOW</a>
+    </p>
+   </div>
+</div>
+  <!-- User has an open cart -->
+  <div *ngIf="this.cart.data.length">
+    <h4>Welcome {{user.data.username}}, your cart is still waiting for you!
+    </h4>
+
+    <div class="well well-sm">
+      <p>Amount of products:<span class ="badge">{{cartCount()}}</span> </p>
+           <p> Total Amount:<span class="badge">{{cartTotal() |currency:'ILS':"symbol-narrow"}}</span>  </p>
+           </div>
+           <p>
+            <a routerLink="shopping" class="w3-button w3-red w3-padding-large w3-large">
+              <i class="material-icons">shopping_cart</i>SHOP NOW</a>
+          </p>
+
+  <button type="button" class="btn btn-danger" routerLink="shopping" (click)="deleteCart()"> Delete Cart</button>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">Assorted Cheese Varieties</div>
+          <div class="panel-body">
+            <img src="assets/images/cheese-varieties.jpg" class="img-responsive" style="width:100%" alt="Image">
+          </div>
+          <div class="panel-footer">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading"> Assorted Bread & pastries</div>
+          <div class="panel-body">
+            <img src="assets/images/bread&bakery.jpg" class="img-responsive" style="width:100%" alt="Image">
+          </div>
+          <div class="panel-footer"> </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">Assorted Fruit & Vegetables</div>
+          <div class="panel-body">
+            <img src="assets/images/background.jpg" class="img-responsive" style="width:100%" alt="Image">
+          </div>
+          <div class="panel-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading"> Assorted Meats</div>
+          <div class="panel-body">
+            <img src="assets/images/steak.jpg" class="img-responsive" style="width:60%;height:30%;" alt="Image">
+          </div>
+          <div class="panel-footer">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading"> Assorted Wines & beverages</div>
+          <div class="panel-body">
+            <img src="assets/images/wine.jpg" class="img-responsive" style="width:60%;height:30%;" alt="Image">
+          </div>
+          <div class="panel-footer">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+</main>

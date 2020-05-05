@@ -1,1 +1,68 @@
-<p>cart works!</p>
+<!--sidebar with cart-->
+
+<div id="sidebar">
+  <div *ngIf="cartVisible">
+    <div *ngIf="cart.data.length">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart.data">
+            <th scope="row">
+              <img src="{{item.image}}" id="image">
+            </th>
+            <td>{{item.name}}</td>
+            <td>{{item.price| currency:'ILS':"symbol-narrow"}}</td>
+            <td>
+              <div *ngIf="updatedItem!=item" class="pointer"(click)="updatedItem=item; updatedAmount =item.amount">{{item.amount}}</div>
+              <div *ngIf ="updatedItem ==item">
+              <div class="input-group mb-3">
+                <input type="number" class="form-control" [(ngModel)]="updatedAmount" name="updatedAmount" min="1" style="width:10px">
+
+                <button mat-mini-fab color="warn" (click)="updateAmount()"><i class="material-icons">check_circle_outline</i> </button>
+                <button mat-mini-fab color="warn" (click)="updatedItem=null"><i class="material-icons">clear</i></button>
+              </div>
+              </div>
+            </td>
+            <td>{{item.total| currency:'ILS':"symbol-narrow" }}</td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="deleteItem(item)">
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div class="alert alert-warning" role="alert">
+        <p>Amount in cart:{{cartCount()}}</p>
+        <p> Order Subtotal: {{cartTotal() |currency:'ILS':"symbol-narrow"}}</p>
+      </div>
+
+
+      <button type="button" class="btn btn-danger" routerLink='/customer/myorder' style="float:right;">
+        <i class="material-icons">credit_card</i>
+        Order
+      </button>
+
+      <button type="button" class="btn btn-danger" (click)=deleteCart()>
+        <i class="material-icons">delete</i>
+        Empty Cart
+      </button>
+    </div>
+  </div>
+
+
+  <div *ngIf="!cart.data.length">
+    No items in the cart, please start shopping! </div>
+</div>
+

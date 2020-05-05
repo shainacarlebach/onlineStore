@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ProductService } from '../../services/product.service';
+import * as $AB from 'jquery';
+declare var $: any
 
 @Component({
   selector: 'app-shopping',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingComponent implements OnInit {
 
-  constructor() { }
+ constructor(private authenticationService: AuthenticationService,
+  private productService: ProductService) {}
 
-  ngOnInit(): void {
-  }
+  // get cart in sidebar
+ ngOnInit(){
+      }
+      sideBarToggle() {
+        $('#sidebar').toggleClass('visible');
+      }
 
 }

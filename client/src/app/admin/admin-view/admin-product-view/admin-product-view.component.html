@@ -1,1 +1,16 @@
-<p>admin-product-view works!</p>
+<!-- admin products-->
+<div class="card-group" >
+  <a *ngFor="let product of products.data" class="col-md-4 card" data-toggle="modal" data-target="#myModal" (click)="openModal(product)">
+      <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+      <div class="card-body" id="productsdisplay">
+    <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.details}}</p>
+      <p class="card-text">{{product.price| currency:'ILS':"symbol-narrow"}}</p>
+      <p class="card-text">{{product.code}}</p>
+       <button mat-mini-fab color="warn"> <i class="material-icons">create</i></button>
+    </div>
+  </a>
+  </div>
+
+  <div data-spy="scroll" data-target=".card-group" data-offset="0"></div>
+

@@ -7,6 +7,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +30,7 @@ export class AuthenticationService {
 
   //login new user
   login(username: string, password: string) {
-    return this.http.post(environment.serverAddress + 'login', { username: username, password: password })
+    return this.http.post(environment.serverAddress + 'login', { username: username, password: password },httpOptions)
     .pipe(map(response=>{
       if(response){
            localStorage.setItem('tokenid',JSON.stringify(response));

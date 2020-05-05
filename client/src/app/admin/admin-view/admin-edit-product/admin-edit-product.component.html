@@ -1,1 +1,88 @@
-<p>admin-edit-product works!</p>
+<!-- update product form-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{p.data.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+            <form #updateForm="ngForm" id='updateForm' (ngSubmit)="onSubmit()">
+              <h6>Update Product:</h6>
+
+              <div>
+                Product Code:{{p.data.code}}
+              </div>
+
+              <div class="form-group">
+                <label for="name">Enter new name:</label>
+                <input type="text" class="form-control" [(ngModel)]="product.name"name="name" #name="ngModel" style="width:300px" placeholder="Enter new product name" required/>
+                <div [hidden]="name.valid ||name.pristine" class="alert alert-danger">
+                  Name is required
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div *ngIf="categories">
+                  <div class="form-group">
+                    <label for="category">Select new category:</label>
+                    <select class="form-control"  name="category" required [(ngModel)]="product.category" id="category" #category="ngModel">
+                      <option value="">Please select a new category</option>
+                      <option *ngFor="let category of categories" [ngValue]="category">{{category.id}}_{{category.name}}</option>
+                    </select>
+                  </div>
+                  <div [hidden]="category.valid ||category.pristine" class="alert alert-danger">
+                    Category is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="price"> Enter new price:</label>
+                <input type="text" class="form-control" [(ngModel)]="product.price"  name="price" #price="ngModel" min="1" style="width:300px"
+                  placeholder="Enter new product price">
+                <div [hidden]="price.valid ||price.pristine" class="alert alert-danger">
+                  Price is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="details">Enter new Details:</label>
+                <textarea class="form-control" [(ngModel)]="product.details" name="details" id="details"  #details="ngModel" rows="2" cols="20" placeholder="Enter new product details"></textarea>
+                <div [hidden]="details.valid ||details.pristine" class="alert alert-danger">
+                  Details are required
+                </div>
+              </div>
+
+              <div>
+                <img id="preview" src="{{p.data.image}}">
+              </div>
+
+              <div class="form-group">
+                <label> Choose a picture</label>
+                <input type="file" name="file" id="file" (change)="fileChangeEvent($event)" accept="image/*" placeholder="Upload file">
+              </div>
+
+              <button type="submit" class="w3-button w3-red" [disabled]="!updateForm.form.valid" (click)="sendForm()"> Update Product
+                <i class="material-icons">shopping_basket</i>
+              </button>
+
+                  <div class="row"  *ngIf="showMessage">
+                    <div class="col-xs-12">
+                      <p class="alert alert-success">
+                          <strong>Your product has been updated</strong>
+                      </p>
+                    </div>
+                  </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

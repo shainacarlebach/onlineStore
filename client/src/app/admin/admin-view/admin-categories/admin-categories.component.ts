@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ProductService } from '../../../services/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-categories',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCategoriesComponent implements OnInit {
 
-  constructor() { }
+  categories: any = [];
+  currentCategory = 1;
+  product: any;
+   search: any = this.productService.search;
 
-  ngOnInit(): void {
-  }
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+
+  // get products by category param
+  ngOnInit() {
+         this.productService.getCategories().subscribe(
+      categories => {
+        this.categories = categories;
+        console.log(categories);
+      }
+    );
+         }
+// call service to get product when customer enters search text
+getProduct() {
+  this.productService.getProductByCategory(this.currentCategory)
+}
+
+
 
 }

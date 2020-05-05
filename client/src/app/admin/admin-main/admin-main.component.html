@@ -1,1 +1,36 @@
-<p>admin-main works!</p>
+<!--navbar to welcome admin-->
+<nav class="navbar">
+  <a class="navbar-brand " href="/">
+    <img id="logo" src="assets/images/supermarket.png" alt="supermarket" style="width:200px;margin-left:0px;">
+  </a>
+  <div class="navbar-expand mr-auto navbar-nav">
+      </div>
+
+  <div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <h4>
+          <i class="material-icons">account_circle</i>
+          Welcome {{user.data.username}}</h4>
+      </li>
+      <li>
+        <h6>
+          <i class="material-icons">people</i>
+          Management Page</h6>
+      </li>
+
+      <br>
+      <br>
+      <li>
+        <a href=# (click)=logout()>
+          <i class="material-icons">input</i> Logout</a>
+      </li>
+    </ul>
+  </div>
+
+
+</nav>
+
+<app-admin-edit-product></app-admin-edit-product>
+<router-outlet></router-outlet>
+

@@ -1,1 +1,63 @@
-<p>shipping works!</p>
+<section class="shipping-block">
+  <div class="container">
+
+      <h3>
+          <i class="material-icons">local_shipping</i> Order:</h3>
+
+
+      <div class="row">
+          <div class="col-md-12" id="shippingForm">
+              <h2>Shipping Details </h2>
+
+              <form #shippingForm="ngForm" class="editForm" novalidate>
+
+<p> Please double click on input to confirm your shipping details.</p>
+
+                  <div class="form-group">
+                      <label for="city"> City Name:</label>
+                      <input id="city" class="form-control input-md" type="text" name="city" required [(ngModel)]="shipping.city"
+                       #cityname="ngModel"(dblclick)=getCustomerCity() (input)="invalid=false">
+                  </div>
+
+      <div class="form-group">
+          <label for="street">Street Address:</label>
+          <input id="street" class="form-control input-md" type="text" name="street" required [(ngModel)]="shipping.street" #street="ngModel"
+              (dblclick)=getCustomerStreet() (input)="invalid=false">
+      </div>
+
+      <div class="form-group">
+          <label for="customername"> Customer Name:</label>
+          <input id="customername" class="form-control input-md" type="text" name="customername" required pattern="[a-zA-Z ]*" [(ngModel)]="shipping.customername"
+              #customername="ngModel" (dblclick)=getCustomerName() (input)="invalid=false">
+
+                    <div *ngIf="customername.dirty && customername.errors" class="error">
+              <div *ngIf="customername.errors.pattern">
+                  The name must be alphabetic characters only
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="deliverydate"> Date of delivery:</label>
+          <input id="deliverydate" class="z-index-10000" type="text" name="deliverydate" [(ngModel)]="shipping.deliverydate" #deliverydate="ngModel"
+              (input)="invalid=false">
+      </div>
+
+     <div class="form-group">
+          <label for="orderdate"> Date of order:</label>
+          <p> {{currentdate}} </p>
+      </div>
+
+
+      <div class="form-group text-center">
+          <button class="btn btn-success" [disabled]="shippingForm.invalid " (click)="goToNext(paymentForm)">Continue</button>
+      </div>
+      </form>
+
+      <!-- DEBUG -->
+      <!-- <pre>{{shippingForm.value | json}}</pre> -->
+
+  </div>
+  </div>
+  </div>
+</section>
